@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    final int OPTION_C = 3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         // getMenuInflater().inflate(R.menu.menu_main, menu);
-        menu.add("AA");
-        menu.add("BB");
-        menu.add("CC");
+        menu.add(0, 0, Menu.NONE,"AA");
+        menu.add(0, 1, Menu.NONE,"BB");
+        menu.add(0, OPTION_C, Menu.NONE,"CC");
+
+
         return true;
     }
 
@@ -47,6 +51,19 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+
+        if (id == 1)
+        {
+            Toast.makeText(MainActivity.this, "BB", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        if (id == OPTION_C)
+        {
+            Toast.makeText(MainActivity.this, "CC", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        /*
         if (id == R.id.action_settings) {
             Toast.makeText(MainActivity.this, "Settings", Toast.LENGTH_SHORT).show();
             return true;
@@ -55,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "About", Toast.LENGTH_SHORT).show();
             return true;
         }
-
+*/
         return super.onOptionsItemSelected(item);
     }
 }
