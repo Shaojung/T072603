@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     final int OPTION_C = 3;
 
-    TextView tv;
+    TextView tv, tv3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         tv = (TextView) findViewById(R.id.textView);
+        tv3 = (TextView) findViewById(R.id.textView3);
         registerForContextMenu(tv);
+        registerForContextMenu(tv3);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,9 +41,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add("AA");
-        menu.add("BB");
-        menu.add("CC");
+        if (v.getId() == R.id.textView)
+        {
+            menu.add("AA");
+            menu.add("BB");
+            menu.add("CC");
+        }
+        if (v.getId() == R.id.textView3)
+        {
+            menu.add("XX");
+            menu.add("YY");
+            menu.add("ZZ");
+        }
+
     }
 
     @Override
